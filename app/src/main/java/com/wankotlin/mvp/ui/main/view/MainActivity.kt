@@ -1,4 +1,4 @@
-package com.wankotlin.mvp.ui.main
+package com.wankotlin.mvp.ui.main.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import com.wankotlin.mvp.R
 import com.wankotlin.mvp.ui.base.view.BaseActivity
-import com.wankotlin.mvp.ui.main.MainActivity
+import com.wankotlin.mvp.ui.main.view.MainActivity
 import com.wankotlin.mvp.ui.splash.interactor.SplashMVPInteractor
 import com.wankotlin.mvp.ui.splash.presenter.SplashMVPPresenter
 import com.wankotlin.mvp.util.AppUtils
