@@ -1,25 +1,22 @@
 package com.wankotlin.mvp.util
 
-import android.app.ProgressDialog
 import android.content.Context
-import android.graphics.Color
-import androidx.graphics.drawable.toDrawable
-import com.wankotlin.mvp.R
+import com.yanzhenjie.loading.dialog.LoadingDialog
 
 /**
  * Created by jyotidubey on 11/01/18.
  */
 object CommonUtil {
 
-    fun showLoadingDialog(context: Context?): ProgressDialog {
-        val progressDialog = ProgressDialog(context)
+    fun showLoadingDialog(context: Context?): LoadingDialog {
+        val progressDialog = LoadingDialog(context)
         progressDialog.let {
-            it.show()
-            it.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
-            it.setContentView(R.layout.progress_dialog)
-            it.isIndeterminate = true
+            it.setMessage("")
             it.setCancelable(false)
             it.setCanceledOnTouchOutside(false)
+            if (!it.isShowing) {
+                it.show()
+            }
             return it
         }
     }

@@ -55,5 +55,6 @@ ext {
     espressoVersion = '2.2.2'
     mockitoVersion = '2.7.1'
     androidKTXVersion = '0.1'
-    permissionsVersion = '3.3.1'
+    permissionsVersion = '2.0.0-rc4'
+    dialogVersion = '1.0.2'
 }

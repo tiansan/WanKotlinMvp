@@ -1,11 +1,11 @@
 package com.wankotlin.mvp.ui.base.view
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import com.wankotlin.mvp.util.CommonUtil
+import com.yanzhenjie.loading.dialog.LoadingDialog
 import dagger.android.support.AndroidSupportInjection
 
 
@@ -15,7 +15,7 @@ import dagger.android.support.AndroidSupportInjection
 abstract class BaseDialogView : DialogFragment(), DialogMVPView {
 
     private var parentActivity: BaseActivity? = null
-    private var progressDialog: ProgressDialog? = null
+    private var progressDialog: LoadingDialog? = null
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)

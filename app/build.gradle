@@ -95,6 +95,8 @@ dependencies {
     implementation "androidx.core:core-ktx:$rootProject.androidKTXVersion"
 
     // permissions
-    implementation("com.github.hotchemi:permissionsdispatcher:$rootProject.permissionsVersion") { exclude module: 'support-v13' }
-    kapt "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.permissionsVersion"
+    implementation "com.yanzhenjie:permission:$rootProject.permissionsVersion"
+
+    //loadingDialog
+    implementation "com.yanzhenjie:loading:$rootProject.dialogVersion"
 }

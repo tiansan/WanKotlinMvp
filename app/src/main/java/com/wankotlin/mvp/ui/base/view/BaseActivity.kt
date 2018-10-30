@@ -1,9 +1,10 @@
 package com.wankotlin.mvp.ui.base.view
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.wankotlin.mvp.util.CommonUtil
+import com.yanzhenjie.loading.dialog.LoadingDialog
+import com.yanzhenjie.permission.AndPermission
 import dagger.android.AndroidInjection
 
 /**
@@ -11,7 +12,7 @@ import dagger.android.AndroidInjection
  */
 abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBack {
 
-    private var progressDialog: ProgressDialog? = null
+    private var progressDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,5 +29,24 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
     }
 
     private fun performDI() = AndroidInjection.inject(this)
+
+    fun requestEachPermissions(vararg permissions: String) {
+        AndPermission.with(this)
+                .permission(*permissions)
+                .rationale(RuntimeRationale())
+                .onGranted { acceptPermission(true) }
+                .onDenied { permissions ->
+                    acceptPermission(false)
+                    if (AndPermission.hasAlwaysDeniedPermission(this@BaseActivity, permissions)) {
+                        AndPermission.permissionSetting(this@BaseActivity)
+                                .execute()
+                    }
+                }
+                .start()
+    }
+
+    open fun acceptPermission(isGranted: Boolean) {
+
+    }
 
 }

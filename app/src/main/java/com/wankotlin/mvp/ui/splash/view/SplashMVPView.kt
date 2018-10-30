@@ -8,8 +8,5 @@ import com.wankotlin.mvp.ui.base.view.MVPView
  */
 interface SplashMVPView : MVPView {
 
-    fun showSuccessToast()
-    fun showErrorToast()
     fun openMainActivity()
-    fun openLoginActivity()
 }
