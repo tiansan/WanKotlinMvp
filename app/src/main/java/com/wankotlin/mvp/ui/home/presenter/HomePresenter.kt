@@ -12,15 +12,31 @@ import javax.inject.Inject
  */
 class HomePresenter<V : HomeMVPView, I : HomeMVPInteractor> @Inject internal constructor(interactor: I, schedulerProvider: SchedulerProvider, disposable: CompositeDisposable) : BasePresenter<V, I>(interactor = interactor, schedulerProvider = schedulerProvider, compositeDisposable = disposable), HomeMVPPresenter<V, I> {
 
+    override fun getHomeBanner() {
+        interactor?.let {
+            compositeDisposable.add(it.getHomeBanner()
+                    .compose(schedulerProvider.ioToMainObservableScheduler())
+                    .subscribe({ homeBannerResponse ->
+                        getView()?.let {
+                            it.updateHomeBanner(homeBannerResponse.data)
+                        }
+                    }, {
+                        getView()?.let { it.updateFailed() }
+                    }))
+        }
+    }
+
     override fun getHomeArticles(page: String) {
         interactor?.let {
             compositeDisposable.add(it.getHomeArticles(page)
                     .compose(schedulerProvider.ioToMainObservableScheduler())
-                    .subscribe { homeArticlesResponse ->
+                    .subscribe({ homeArticlesResponse ->
                         getView()?.let {
-                            homeArticlesResponse.data.let { it1 -> it.updateHomeArticles(it1) }
+                            it.updateHomeArticles(homeArticlesResponse.data)
                         }
-                    })
+                    }, {
+                        getView()?.let { it.updateFailed() }
+                    }))
         }
     }
 

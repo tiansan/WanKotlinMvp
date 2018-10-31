@@ -7,4 +7,6 @@ import com.wankotlin.mvp.ui.home.view.HomeMVPView
 interface HomeMVPPresenter<V : HomeMVPView, I : HomeMVPInteractor> : MVPPresenter<V, I> {
 
     fun getHomeArticles(page: String)
+
+    fun getHomeBanner()
 }

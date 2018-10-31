@@ -51,8 +51,8 @@ class HomeFragment : BaseFragment(), HomeMVPView {
                         .colorResId(R.color.backgroundColor)
                         .sizeResId(R.dimen.d_8)
                         .visibilityProvider { position, _ ->
-                    position == 0
-                }.build()
+                            position == 0
+                        }.build()
         )
         mAdapter.addHeaderView(bannerView)
         mBannerView.setAdapter { banner, itemView, model, position ->
@@ -69,7 +69,7 @@ class HomeFragment : BaseFragment(), HomeMVPView {
             initData()
         }
         mAdapter.setOnItemClickListener { adapter, view, position ->
-//            mAdapter.data[position]?.apply {
+            //            mAdapter.data[position]?.apply {
 //                WebActivity.active(act, link, id, author, title, collect)
 //            }
         }
@@ -80,14 +80,16 @@ class HomeFragment : BaseFragment(), HomeMVPView {
         mBannerView.setDelegate { _, _, model, _ ->
             val bannerItem = model as Banner
             bannerItem.apply {
-//                WebActivity.active(act, url, -1, "wanAndroid", title, collect = false)
+                //                WebActivity.active(act, url, -1, "wanAndroid", title, collect = false)
             }
         }
+        presenter.getHomeBanner()
     }
 
     private fun initData() {
         mLoadingStateView?.loading()
         page = 0
+        presenter.getHomeBanner()
         presenter.getHomeArticles(page.toString())
     }
 
@@ -104,6 +106,18 @@ class HomeFragment : BaseFragment(), HomeMVPView {
             mAdapter.loadMoreEnd()
         }
         mAdapter.setEnableLoadMore(!data.over)
+        mLoadingStateView?.success()
+    }
+
+    override fun updateHomeBanner(data: MutableList<Banner>) {
+        val tips = mutableListOf<String>()
+        data.forEach {
+            tips.add(it.title)
+        }
+        mBannerView.setData(data, tips)
+    }
+
+    override fun updateFailed() {
         mLoadingStateView?.success()
     }
 

@@ -65,4 +65,4 @@ data class Articles(@Expose
                     var zan: Int = 0,
                     @Expose
                     @SerializedName("tags")
-                    var tags: List<ArticlesTag> = listOf())
+                    var tags: MutableList<ArticlesTag> = mutableListOf())

@@ -1,6 +1,7 @@
 package com.wankotlin.mvp.data.network
 
 import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
+import com.wankotlin.mvp.data.network.model.HomeBannerResponse
 import io.reactivex.Observable
 
 /**
@@ -17,7 +18,7 @@ interface ApiHelper {
 //    fun performLogoutApiCall(): Observable<LogoutResponse>
 //
     fun getHomeArticles(page: String): Observable<HomeArticlesResponse>
-//
-//    fun getOpenSourceApiCall(): Observable<OpenSourceResponse>
+
+    fun getHomeBanner(): Observable<HomeBannerResponse>
 
 }

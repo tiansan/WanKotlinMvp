@@ -23,4 +23,4 @@ data class HomeArticles(@Expose
                         var over: Boolean = false,
                         @Expose
                         @SerializedName("datas")
-                        var datas: List<Articles> = listOf())
+                        var datas: MutableList<Articles> = mutableListOf())
