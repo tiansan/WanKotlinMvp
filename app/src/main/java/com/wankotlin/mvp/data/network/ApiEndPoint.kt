@@ -1,11 +1,13 @@
 package com.wankotlin.mvp.data.network
 
+import com.wankotlin.mvp.BuildConfig
+
 /**
  * Created by jyotidubey on 11/01/18.
  */
 object ApiEndPoint {
 
-//    val ENDPOINT_GOOGLE_LOGIN = BuildConfig.BASE_URL + "/588d14f4100000a9072d2943"
+    val HOME_ARTICLES = BuildConfig.BASE_URL + "/article/list/{page}/json"
 //    val ENDPOINT_FACEBOOK_LOGIN = BuildConfig.BASE_URL + "/588d15d3100000ae072d2944"
 //    val ENDPOINT_SERVER_LOGIN = BuildConfig.BASE_URL + "/588d15f5100000a8072d2945"
 //    val ENDPOINT_LOGOUT = BuildConfig.BASE_URL + "/588d161c100000a9072d2946"

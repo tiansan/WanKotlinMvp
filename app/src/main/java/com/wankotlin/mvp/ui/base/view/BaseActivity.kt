@@ -2,6 +2,7 @@ package com.wankotlin.mvp.ui.base.view
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.wankotlin.mvp.util.CommonUtil
 import com.yanzhenjie.loading.dialog.LoadingDialog
 import com.yanzhenjie.permission.AndPermission
@@ -47,6 +48,14 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
 
     open fun acceptPermission(isGranted: Boolean) {
 
+    }
+
+    fun showMessage(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    fun showMessage(msgIds: Int) {
+        Toast.makeText(this, msgIds, Toast.LENGTH_SHORT).show()
     }
 
 }

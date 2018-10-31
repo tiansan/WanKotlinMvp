@@ -1,11 +1,14 @@
 package com.wankotlin.mvp.data.network
 
+import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
+import io.reactivex.Observable
+
 /**
  * Created by jyotidubey on 04/01/18.
  */
 interface ApiHelper {
 
-//    fun performServerLogin(request: LoginRequest.ServerLoginRequest): Observable<LoginResponse>
+    //    fun performServerLogin(request: LoginRequest.ServerLoginRequest): Observable<LoginResponse>
 //
 //    fun performFBLogin(request: LoginRequest.FacebookLoginRequest): Observable<LoginResponse>
 //
@@ -13,7 +16,7 @@ interface ApiHelper {
 //
 //    fun performLogoutApiCall(): Observable<LogoutResponse>
 //
-//    fun getBlogApiCall(): Observable<BlogResponse>
+    fun getHomeArticles(page: String): Observable<HomeArticlesResponse>
 //
 //    fun getOpenSourceApiCall(): Observable<OpenSourceResponse>
 

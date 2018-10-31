@@ -1,11 +1,20 @@
 package com.wankotlin.mvp.data.network
 
+import com.rx2androidnetworking.Rx2AndroidNetworking
+import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
+import io.reactivex.Observable
 import javax.inject.Inject
 
 /**
  * Created by jyotidubey on 04/01/18.
  */
 class AppApiHelper @Inject constructor(private val apiHeader: ApiHeader) : ApiHelper {
+
+    override fun getHomeArticles(page: String): Observable<HomeArticlesResponse> =
+            Rx2AndroidNetworking.get(ApiEndPoint.HOME_ARTICLES)
+                    .addPathParameter("page", page)
+                    .build()
+                    .getObjectObservable(HomeArticlesResponse::class.java)
 
 //    override fun performServerLogin(request: LoginRequest.ServerLoginRequest): Observable<LoginResponse> =
 //            Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_SERVER_LOGIN)

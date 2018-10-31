@@ -3,8 +3,11 @@ package com.wankotlin.mvp.ui.base.view
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import com.wankotlin.mvp.util.CommonUtil
+import com.wankotlin.mvp.widget.LoadingStateView
 import com.yanzhenjie.loading.dialog.LoadingDialog
 import dagger.android.support.AndroidSupportInjection
 
@@ -16,9 +19,15 @@ abstract class BaseFragment : Fragment(), MVPView {
 
     private var parentActivity: BaseActivity? = null
     private var progressDialog: LoadingDialog? = null
+    protected var mLoadingStateView : LoadingStateView? = null
+    /**
+     * 当前页面需要加载的layoutId，等价setContentView
+     */
+    abstract val inflateId: Int
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
+        mLoadingStateView = LoadingStateView(context!!)
         if (context is BaseActivity) {
             val activity = context as BaseActivity?
             this.parentActivity = activity
@@ -30,6 +39,10 @@ abstract class BaseFragment : Fragment(), MVPView {
         super.onCreate(savedInstanceState)
         performDependencyInjection()
         setHasOptionsMenu(false)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(inflateId, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
