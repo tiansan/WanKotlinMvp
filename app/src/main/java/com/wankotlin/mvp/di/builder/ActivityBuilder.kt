@@ -5,6 +5,8 @@ import com.wankotlin.mvp.ui.main.MainActivityModule
 import com.wankotlin.mvp.ui.main.view.MainActivity
 import com.wankotlin.mvp.ui.splash.SplashActivityModule
 import com.wankotlin.mvp.ui.splash.view.SplashActivity
+import com.wankotlin.mvp.ui.web.WebActivityModule
+import com.wankotlin.mvp.ui.web.view.WebActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -20,9 +22,9 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [(MainActivityModule::class), (HomeFragmentProvider::class)])
     abstract fun bindMainActivity(): MainActivity
 
-//    @ContributesAndroidInjector(modules = [(LoginActivityModule::class)])
-//    abstract fun bindLoginActivity(): LoginActivity
-//
+    @ContributesAndroidInjector(modules = [(WebActivityModule::class)])
+    abstract fun bindWebActivity(): WebActivity
+
 //    @ContributesAndroidInjector(modules = [(BlogFragmentProvider::class), (OpenSourceFragmentProvider::class)])
 //    abstract fun bindFeedActivity(): FeedActivity
 

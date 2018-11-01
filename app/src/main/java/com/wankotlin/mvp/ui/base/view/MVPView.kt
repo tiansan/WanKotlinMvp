@@ -9,4 +9,8 @@ interface MVPView {
 
     fun hideProgress()
 
+    fun showMessage(msg: String)
+
+    fun showMessage(msgIds: Int)
+
 }

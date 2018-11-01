@@ -1,23 +1,17 @@
-package com.wankotlin.mvp.data.network
+package com.wankotlin.mvp.ui.web.interactor
 
-import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
-import com.wankotlin.mvp.data.network.model.HomeBannerResponse
 import com.wankotlin.mvp.data.network.model.WebResponse
+import com.wankotlin.mvp.ui.base.interactor.MVPInteractor
 import io.reactivex.Observable
 
 /**
  * Created by jyotidubey on 04/01/18.
  */
-interface ApiHelper {
-
-    fun getHomeArticles(page: String): Observable<HomeArticlesResponse>
-
-    fun getHomeBanner(): Observable<HomeBannerResponse>
+interface WebMVPInteractor : MVPInteractor {
 
     fun postWebCollect(id: Int): Observable<WebResponse>
 
     fun postWebUnCollect(id: Int): Observable<WebResponse>
 
     fun postWebUnCollectPage(id: Int, originId: Int): Observable<WebResponse>
-
 }

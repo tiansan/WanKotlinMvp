@@ -2,6 +2,7 @@
 
 buildscript {
     ext.kotlinVersion = '1.2.61'
+    ext.ankoVersion='0.10.7'
     repositories {
         google()
         jcenter()
@@ -36,6 +37,7 @@ ext {
 
     // App dependencies
     kotlinVersion = kotlinVersion
+    ankoVersion = ankoVersion
     supportLibraryVersion = '27.1.1'
     gsonVersion = '2.8.0'
     calligraphyVersion = '2.2.0'

@@ -43,7 +43,7 @@ class HomeAdapter : BaseQuickAdapter<Articles, BaseViewHolder>(R.layout.item_hom
                     R.color.red
                 } else {
                     R.color.gray_1
-                }))
+                }, null))
             }
         }
     }

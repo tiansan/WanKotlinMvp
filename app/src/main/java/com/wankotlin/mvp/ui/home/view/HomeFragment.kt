@@ -12,6 +12,7 @@ import com.wankotlin.mvp.data.network.model.HomeArticles
 import com.wankotlin.mvp.ui.base.view.BaseFragment
 import com.wankotlin.mvp.ui.home.interactor.HomeMVPInteractor
 import com.wankotlin.mvp.ui.home.presenter.HomeMVPPresenter
+import com.wankotlin.mvp.ui.web.view.WebActivity
 import com.wankotlin.mvp.util.extension.loadImage
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -55,7 +56,7 @@ class HomeFragment : BaseFragment(), HomeMVPView {
                         }.build()
         )
         mAdapter.addHeaderView(bannerView)
-        mBannerView.setAdapter { banner, itemView, model, position ->
+        mBannerView.setAdapter { _, itemView, model, _ ->
             val imageView: ImageView = itemView as ImageView
             val bannerItem = model as Banner
             imageView.loadImage(bannerItem.imagePath)
@@ -68,10 +69,10 @@ class HomeFragment : BaseFragment(), HomeMVPView {
         refreshLayout.setOnRefreshListener {
             initData()
         }
-        mAdapter.setOnItemClickListener { adapter, view, position ->
-            //            mAdapter.data[position]?.apply {
-//                WebActivity.active(act, link, id, author, title, collect)
-//            }
+        mAdapter.setOnItemClickListener { _, _, position ->
+            mAdapter.data[position]?.apply {
+                activity?.let { WebActivity.active(it, link, -1, "wanAndroid", title, collect = false) }
+            }
         }
         mAdapter.emptyView = mLoadingStateView
         mLoadingStateView?.setOnReloadClickListener {
@@ -80,7 +81,7 @@ class HomeFragment : BaseFragment(), HomeMVPView {
         mBannerView.setDelegate { _, _, model, _ ->
             val bannerItem = model as Banner
             bannerItem.apply {
-                //                WebActivity.active(act, url, -1, "wanAndroid", title, collect = false)
+                activity?.let { WebActivity.active(it, url, -1, "wanAndroid", title, collect = false) }
             }
         }
         presenter.getHomeBanner()
@@ -125,4 +126,5 @@ class HomeFragment : BaseFragment(), HomeMVPView {
         presenter.onDetach()
         super.onDestroy()
     }
+
 }

@@ -50,11 +50,11 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
 
     }
 
-    fun showMessage(msg: String) {
+    override fun showMessage(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun showMessage(msgIds: Int) {
+    override fun showMessage(msgIds: Int) {
         Toast.makeText(this, msgIds, Toast.LENGTH_SHORT).show()
     }
 
