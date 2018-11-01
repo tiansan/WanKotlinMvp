@@ -38,6 +38,7 @@ class AppApiHelper @Inject constructor(private val apiHeader: ApiHeader) : ApiHe
     override fun postWebUnCollectPage(id: Int, originId: Int): Observable<WebResponse> =
             Rx2AndroidNetworking.post(ApiEndPoint.WEB_UNCOLLECT_PAGE)
                     .addPathParameter("id", id.toString())
+                    .addQueryParameter("originId", originId.toString())
                     .build()
                     .getObjectObservable(WebResponse::class.java)
 }
