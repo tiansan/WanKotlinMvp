@@ -33,7 +33,7 @@ interface PreferenceHelper {
 
     fun getCurrentUserType(): Int
 
-    fun setCurrnetUserType(type: Int?)
+    fun setCurrnetUserType(type: Int)
 
     fun getAccessToken(): String
 

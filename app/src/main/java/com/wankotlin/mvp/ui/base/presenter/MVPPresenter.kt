@@ -15,4 +15,6 @@ interface MVPPresenter<V : MVPView, I : MVPInteractor> {
 
     fun getView(): V?
 
+    fun isUserLoggedIn(): Boolean
+
 }

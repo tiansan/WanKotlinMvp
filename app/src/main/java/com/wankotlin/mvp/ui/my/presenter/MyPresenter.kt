@@ -16,9 +16,9 @@ class MyPresenter<V : MyMVPView, I : MyMVPInteractor> @Inject internal construct
         super.onAttach(view)
 
         if (isUserLoggedIn()){
-
+            getView()?.setViewLogin(interactor?.getUserInfo())
         }else{
-
+            getView()?.setViewLogout()
         }
     }
 

@@ -43,10 +43,10 @@ class AppPreferenceHelper @Inject constructor(context: Context,
 
     override fun setAccessToken(accessToken: String?) = mPrefs.edit { putString(PREF_KEY_ACCESS_TOKEN, accessToken) }
 
-    override fun getCurrentUserId(): Int? {
+    override fun getCurrentUserId(): Int {
         val userId = mPrefs.getInt(PREF_KEY_CURRENT_USER_ID, AppConstants.NULL_INDEX)
         return when (userId) {
-            AppConstants.NULL_INDEX -> null
+            AppConstants.NULL_INDEX -> -1
             else -> userId
         }
     }
@@ -60,23 +60,23 @@ class AppPreferenceHelper @Inject constructor(context: Context,
         mPrefs.edit { putInt(PREF_KEY_USER_LOGGED_IN_MODE, mode.type) }
     }
 
-    override fun getCookie(): HashSet<String>? =
-            mPrefs.getStringSet(PREF_KEY_USER_COOKIES, hashSetOf<String>()) as HashSet<String>?
+    override fun getCookie(): HashSet<String> =
+            mPrefs.getStringSet(PREF_KEY_USER_COOKIES, hashSetOf<String>()) as HashSet<String>
 
     override fun saveCookie(set: HashSet<String>?) =
             mPrefs.edit { putStringSet(PREF_KEY_USER_COOKIES, set) }
 
-    override fun getCurrentUserIcon(): String? = mPrefs.getString(PREF_KEY_CURRENT_USER_ICON, "")
+    override fun getCurrentUserIcon(): String = mPrefs.getString(PREF_KEY_CURRENT_USER_ICON, "")
             ?: ""
 
     override fun setCurrentUserIcon(icon: String?) = mPrefs.edit { putString(PREF_KEY_CURRENT_USER_ICON, icon) }
 
-    override fun getCurrentUserPassword(): String? = mPrefs.getString(PREF_KEY_CURRENT_USER_PASSWORD, "")
+    override fun getCurrentUserPassword(): String = mPrefs.getString(PREF_KEY_CURRENT_USER_PASSWORD, "")
             ?: ""
 
     override fun setCurrentUserPassword(password: String?) = mPrefs.edit { putString(PREF_KEY_CURRENT_USER_PASSWORD, password) }
 
-    override fun getCurrentUserType(): Int? = mPrefs.getInt(PREF_KEY_CURRENT_USER_TYPE, -1)
+    override fun getCurrentUserType(): Int = mPrefs.getInt(PREF_KEY_CURRENT_USER_TYPE, -1)
 
     override fun setCurrnetUserType(type: Int) = mPrefs.edit { putInt(PREF_KEY_CURRENT_USER_TYPE, type) }
 

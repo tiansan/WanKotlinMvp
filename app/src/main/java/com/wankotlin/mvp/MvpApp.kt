@@ -26,7 +26,7 @@ class MvpApp : Application(), HasActivityInjector {
         super.onCreate()
 
         initDagger()
-        initNetwork()
+//        initNetwork()
     }
 
     private fun initNetwork() {

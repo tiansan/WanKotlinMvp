@@ -25,7 +25,7 @@ abstract class BasePresenter<V : MVPView, I : MVPInteractor> internal constructo
         interactor = null
     }
 
-    fun isUserLoggedIn(): Boolean {
+    override fun isUserLoggedIn(): Boolean {
         interactor?.let { return it.isUserLoggedIn() }
         return false
     }
