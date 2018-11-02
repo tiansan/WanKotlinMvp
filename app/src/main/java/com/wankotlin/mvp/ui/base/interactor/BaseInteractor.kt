@@ -1,6 +1,7 @@
 package com.wankotlin.mvp.ui.base.interactor
 
 import com.wankotlin.mvp.data.network.ApiHelper
+import com.wankotlin.mvp.data.network.model.User
 import com.wankotlin.mvp.data.preferences.PreferenceHelper
 import com.wankotlin.mvp.util.AppConstants
 
@@ -24,7 +25,25 @@ open class BaseInteractor() : MVPInteractor {
         it.setCurrentUserId(null)
         it.setAccessToken(null)
         it.setCurrentUserEmail(null)
+        it.setAccessToken(null)
+        it.setCurrentUserIcon(null)
+        it.setCurrentUserPassword(null)
+        it.setCurrnetUserType(-1)
         it.setCurrentUserLoggedInMode(AppConstants.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT)
+    }
+
+    override fun getUserInfo(): User {
+        var user = User()
+        preferenceHelper.let {
+            user.email = it.getCurrentUserEmail()
+            user.icon = it.getCurrentUserIcon()
+            user.id = it.getCurrentUserId()
+            user.password = it.getCurrentUserPassword()
+            user.token = it.getAccessToken()
+            user.type = it.getCurrentUserType()
+            user.username = it.getCurrentUserName()
+        }
+        return user
     }
 
 }

@@ -1,9 +1,9 @@
 package com.wankotlin.mvp.data.network
 
 import com.rx2androidnetworking.Rx2AndroidNetworking
+import com.wankotlin.mvp.data.network.model.BaseResponse
 import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
 import com.wankotlin.mvp.data.network.model.HomeBannerResponse
-import com.wankotlin.mvp.data.network.model.WebResponse
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -23,22 +23,27 @@ class AppApiHelper @Inject constructor(private val apiHeader: ApiHeader) : ApiHe
                     .build()
                     .getObjectObservable(HomeArticlesResponse::class.java)
 
-    override fun postWebCollect(id: Int): Observable<WebResponse> =
+    override fun postWebCollect(id: Int): Observable<BaseResponse> =
             Rx2AndroidNetworking.post(ApiEndPoint.WEB_COLLECT)
                     .addPathParameter("id", id.toString())
                     .build()
-                    .getObjectObservable(WebResponse::class.java)
+                    .getObjectObservable(BaseResponse::class.java)
 
-    override fun postWebUnCollect(id: Int): Observable<WebResponse> =
+    override fun postWebUnCollect(id: Int): Observable<BaseResponse> =
             Rx2AndroidNetworking.post(ApiEndPoint.WEB_UNCOLLECT)
                     .addPathParameter("id", id.toString())
                     .build()
-                    .getObjectObservable(WebResponse::class.java)
+                    .getObjectObservable(BaseResponse::class.java)
 
-    override fun postWebUnCollectPage(id: Int, originId: Int): Observable<WebResponse> =
+    override fun postWebUnCollectPage(id: Int, originId: Int): Observable<BaseResponse> =
             Rx2AndroidNetworking.post(ApiEndPoint.WEB_UNCOLLECT_PAGE)
                     .addPathParameter("id", id.toString())
-                    .addQueryParameter("originId", originId.toString())
+                    .addUrlEncodeFormBodyParameter("originId", originId.toString())
                     .build()
-                    .getObjectObservable(WebResponse::class.java)
+                    .getObjectObservable(BaseResponse::class.java)
+
+    override fun doUserLogout(): Observable<BaseResponse> =
+            Rx2AndroidNetworking.get(ApiEndPoint.USER_LOGOUT)
+                    .build()
+                    .getObjectObservable(BaseResponse::class.java)
 }

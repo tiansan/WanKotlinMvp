@@ -1,8 +1,8 @@
 package com.wankotlin.mvp.data.network
 
+import com.wankotlin.mvp.data.network.model.BaseResponse
 import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
 import com.wankotlin.mvp.data.network.model.HomeBannerResponse
-import com.wankotlin.mvp.data.network.model.WebResponse
 import io.reactivex.Observable
 
 /**
@@ -14,10 +14,11 @@ interface ApiHelper {
 
     fun getHomeBanner(): Observable<HomeBannerResponse>
 
-    fun postWebCollect(id: Int): Observable<WebResponse>
+    fun postWebCollect(id: Int): Observable<BaseResponse>
 
-    fun postWebUnCollect(id: Int): Observable<WebResponse>
+    fun postWebUnCollect(id: Int): Observable<BaseResponse>
 
-    fun postWebUnCollectPage(id: Int, originId: Int): Observable<WebResponse>
+    fun postWebUnCollectPage(id: Int, originId: Int): Observable<BaseResponse>
 
+    fun doUserLogout(): Observable<BaseResponse>
 }

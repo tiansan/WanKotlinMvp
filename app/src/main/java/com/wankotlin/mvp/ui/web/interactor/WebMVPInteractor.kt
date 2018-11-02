@@ -1,6 +1,6 @@
 package com.wankotlin.mvp.ui.web.interactor
 
-import com.wankotlin.mvp.data.network.model.WebResponse
+import com.wankotlin.mvp.data.network.model.BaseResponse
 import com.wankotlin.mvp.ui.base.interactor.MVPInteractor
 import io.reactivex.Observable
 
@@ -9,9 +9,9 @@ import io.reactivex.Observable
  */
 interface WebMVPInteractor : MVPInteractor {
 
-    fun postWebCollect(id: Int): Observable<WebResponse>
+    fun postWebCollect(id: Int): Observable<BaseResponse>
 
-    fun postWebUnCollect(id: Int): Observable<WebResponse>
+    fun postWebUnCollect(id: Int): Observable<BaseResponse>
 
-    fun postWebUnCollectPage(id: Int, originId: Int): Observable<WebResponse>
+    fun postWebUnCollectPage(id: Int, originId: Int): Observable<BaseResponse>
 }

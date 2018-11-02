@@ -71,9 +71,4 @@ class WebPresenter<V : WebMVPView, I : WebMVPInteractor> @Inject internal constr
 
     }
 
-    private fun isUserLoggedIn(): Boolean {
-        interactor?.let { return it.isUserLoggedIn() }
-        return false
-    }
-
 }

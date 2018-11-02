@@ -3,6 +3,7 @@ package com.wankotlin.mvp.di.builder
 import com.wankotlin.mvp.ui.home.HomeFragmentProvider
 import com.wankotlin.mvp.ui.main.MainActivityModule
 import com.wankotlin.mvp.ui.main.view.MainActivity
+import com.wankotlin.mvp.ui.my.MyFragmentProvider
 import com.wankotlin.mvp.ui.splash.SplashActivityModule
 import com.wankotlin.mvp.ui.splash.view.SplashActivity
 import com.wankotlin.mvp.ui.web.WebActivityModule
@@ -19,7 +20,7 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [(SplashActivityModule::class)])
     abstract fun bindSplashActivity(): SplashActivity
 
-    @ContributesAndroidInjector(modules = [(MainActivityModule::class), (HomeFragmentProvider::class)])
+    @ContributesAndroidInjector(modules = [(MainActivityModule::class), (HomeFragmentProvider::class), (MyFragmentProvider::class)])
     abstract fun bindMainActivity(): MainActivity
 
     @ContributesAndroidInjector(modules = [(WebActivityModule::class)])

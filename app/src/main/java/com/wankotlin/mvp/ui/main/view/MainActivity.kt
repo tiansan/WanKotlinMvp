@@ -10,6 +10,7 @@ import com.wankotlin.mvp.ui.base.view.BaseActivity
 import com.wankotlin.mvp.ui.home.view.HomeFragment
 import com.wankotlin.mvp.ui.main.interactor.MainMVPInteractor
 import com.wankotlin.mvp.ui.main.presenter.MainMVPPresenter
+import com.wankotlin.mvp.ui.my.view.MyFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -36,7 +37,7 @@ class MainActivity : BaseActivity(), MainMVPView, View.OnClickListener, ViewPage
         fragments.add(HomeFragment.newInstance())
         fragments.add(HomeFragment.newInstance())
         fragments.add(HomeFragment.newInstance())
-        fragments.add(HomeFragment.newInstance())
+        fragments.add(MyFragment.newInstance())
 
         homeViewPager.adapter = HomeViewPagerAdapter(fragments, supportFragmentManager)
         homeViewPager.offscreenPageLimit = 4
