@@ -34,10 +34,10 @@ class MainActivity : BaseActivity(), MainMVPView, View.OnClickListener, ViewPage
     }
 
     fun setUp() {
-        fragments.add(HomeFragment.newInstance())
-        fragments.add(HomeFragment.newInstance())
-        fragments.add(HomeFragment.newInstance())
-        fragments.add(MyFragment.newInstance())
+        fragments.add(HomeFragment())
+        fragments.add(HomeFragment())
+        fragments.add(HomeFragment())
+        fragments.add(MyFragment())
 
         homeViewPager.adapter = HomeViewPagerAdapter(fragments, supportFragmentManager)
         homeViewPager.offscreenPageLimit = 4
@@ -55,6 +55,7 @@ class MainActivity : BaseActivity(), MainMVPView, View.OnClickListener, ViewPage
     }
 
     private fun setBottomBarSelect(i: Int) {
+        homeViewPager.setCurrentItem(i, false)
         for (view in bottomViews) {
             view.isSelected = false
         }
