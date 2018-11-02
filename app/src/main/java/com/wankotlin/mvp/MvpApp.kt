@@ -3,8 +3,9 @@ package com.wankotlin.mvp
 import android.app.Activity
 import android.app.Application
 import com.androidnetworking.AndroidNetworking
-import com.githubly.wanandroid.net.ReadCookiesInterceptor
-import com.githubly.wanandroid.net.SaveCookiesInterceptor
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.wankotlin.mvp.di.component.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -26,15 +27,14 @@ class MvpApp : Application(), HasActivityInjector {
         super.onCreate()
 
         initDagger()
-//        initNetwork()
+        initNetwork()
     }
 
     private fun initNetwork() {
         val okHttpClient = OkHttpClient().newBuilder()
-                .addNetworkInterceptor(ReadCookiesInterceptor())
-                .addInterceptor(SaveCookiesInterceptor())
+                .cookieJar(PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(this)))
                 .build()
-        AndroidNetworking.initialize(applicationContext, okHttpClient)
+        AndroidNetworking.initialize(this, okHttpClient)
     }
 
     private fun initDagger() {
