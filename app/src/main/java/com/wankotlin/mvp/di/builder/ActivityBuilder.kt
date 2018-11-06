@@ -1,6 +1,8 @@
 package com.wankotlin.mvp.di.builder
 
 import com.wankotlin.mvp.ui.home.HomeFragmentProvider
+import com.wankotlin.mvp.ui.login.LoginActivityModule
+import com.wankotlin.mvp.ui.login.view.LoginActivity
 import com.wankotlin.mvp.ui.main.MainActivityModule
 import com.wankotlin.mvp.ui.main.view.MainActivity
 import com.wankotlin.mvp.ui.my.MyFragmentProvider
@@ -26,7 +28,6 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [(WebActivityModule::class)])
     abstract fun bindWebActivity(): WebActivity
 
-//    @ContributesAndroidInjector(modules = [(BlogFragmentProvider::class), (OpenSourceFragmentProvider::class)])
-//    abstract fun bindFeedActivity(): FeedActivity
-
+    @ContributesAndroidInjector(modules = [LoginActivityModule::class])
+    abstract fun bindLoginActivity(): LoginActivity
 }

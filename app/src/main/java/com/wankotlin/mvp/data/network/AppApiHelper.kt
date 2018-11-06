@@ -4,6 +4,7 @@ import com.rx2androidnetworking.Rx2AndroidNetworking
 import com.wankotlin.mvp.data.network.model.BaseResponse
 import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
 import com.wankotlin.mvp.data.network.model.HomeBannerResponse
+import com.wankotlin.mvp.data.network.model.UserResponse
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -46,4 +47,20 @@ class AppApiHelper @Inject constructor(private val apiHeader: ApiHeader) : ApiHe
             Rx2AndroidNetworking.get(ApiEndPoint.USER_LOGOUT)
                     .build()
                     .getObjectObservable(BaseResponse::class.java)
+
+    override fun doUserLogin(userName: String, password: String): Observable<UserResponse> =
+            Rx2AndroidNetworking.post(ApiEndPoint.USER_LOGIN)
+                    .addUrlEncodeFormBodyParameter("username", userName)
+                    .addUrlEncodeFormBodyParameter("password", password)
+                    .build()
+                    .getObjectObservable(UserResponse::class.java)
+
+    override fun doUserRegister(userName: String, password: String, repassword: String): Observable<UserResponse> =
+            Rx2AndroidNetworking.post(ApiEndPoint.USER_REGISTER)
+                    .addUrlEncodeFormBodyParameter("username", userName)
+                    .addUrlEncodeFormBodyParameter("password", password)
+                    .addUrlEncodeFormBodyParameter("repassword", repassword)
+                    .build()
+                    .getObjectObservable(UserResponse::class.java)
+
 }

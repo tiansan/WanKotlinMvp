@@ -13,5 +13,7 @@ object ApiEndPoint {
     val WEB_UNCOLLECT = BuildConfig.BASE_URL + "/lg/uncollect_originId/{id}/json"
     val WEB_UNCOLLECT_PAGE = BuildConfig.BASE_URL + "/lg/uncollect/{id}/json"
     val USER_LOGOUT = BuildConfig.BASE_URL + "/user/logout/json"
+    val USER_LOGIN = BuildConfig.BASE_URL + "/user/login"
+    val USER_REGISTER = BuildConfig.BASE_URL + "/user/register"
 
 }

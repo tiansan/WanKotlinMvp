@@ -3,6 +3,7 @@ package com.wankotlin.mvp.data.network
 import com.wankotlin.mvp.data.network.model.BaseResponse
 import com.wankotlin.mvp.data.network.model.HomeArticlesResponse
 import com.wankotlin.mvp.data.network.model.HomeBannerResponse
+import com.wankotlin.mvp.data.network.model.UserResponse
 import io.reactivex.Observable
 
 /**
@@ -21,4 +22,8 @@ interface ApiHelper {
     fun postWebUnCollectPage(id: Int, originId: Int): Observable<BaseResponse>
 
     fun doUserLogout(): Observable<BaseResponse>
+
+    fun doUserLogin(userName: String, password: String): Observable<UserResponse>
+
+    fun doUserRegister(userName: String, password: String, repassword: String): Observable<UserResponse>
 }

@@ -1,13 +1,28 @@
 package com.wankotlin.mvp.data.network.model
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class User(
-        @SerializedName("email") var email: String = "",
-        @SerializedName("icon") var icon: String = "",
-        @SerializedName("id") var id: Int = 0,
-        @SerializedName("password") var password: String = "",
-        @SerializedName("token") var token: String = "",
-        @SerializedName("type") var type: Int = 0,
-        @SerializedName("username") var username: String = ""
+        @Expose
+        @SerializedName("email")
+        var email: String = "",
+        @Expose
+        @SerializedName("icon")
+        var icon: String = "",
+        @Expose
+        @SerializedName("id")
+        var id: Int = 0,
+        @Expose
+        @SerializedName("password")
+        var password: String = "",
+        @Expose
+        @SerializedName("token")
+        var token: String = "",
+        @Expose
+        @SerializedName("type")
+        var type: Int = 0,
+        @Expose
+        @SerializedName("username")
+        var username: String = ""
 )
