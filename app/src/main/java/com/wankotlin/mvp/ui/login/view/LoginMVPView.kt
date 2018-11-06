@@ -1,6 +1,5 @@
 package com.wankotlin.mvp.ui.login.view
 
-import com.wankotlin.mvp.data.network.model.User
 import com.wankotlin.mvp.ui.base.view.MVPView
 
 
@@ -9,11 +8,11 @@ import com.wankotlin.mvp.ui.base.view.MVPView
  */
 interface LoginMVPView : MVPView {
 
-    fun onLoginSuccess(user: User)
+    fun onLoginSuccess()
 
     fun onLoginFailed(msg: String)
 
-    fun onRegisterSuccess(user: User)
+    fun onRegisterSuccess()
 
     fun onRegisterFailed(msg: String)
 

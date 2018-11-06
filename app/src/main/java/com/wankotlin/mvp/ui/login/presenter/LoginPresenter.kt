@@ -16,8 +16,13 @@ class LoginPresenter<V : LoginMVPView, I : LoginMVPInteractor> @Inject internal 
         interactor?.let {
             compositeDisposable.add(it.doUserLogin(userName, password)
                     .compose(schedulerProvider.ioToMainObservableScheduler())
-                    .subscribe { userRespojse ->
-                        getView()?.onLoginSuccess(userRespojse.data)
+                    .subscribe { userResponse ->
+                        if (userResponse.isSuccess) {
+                            it.saveUserInfo(userResponse.data)
+                            getView()?.onLoginSuccess()
+                        } else {
+                            getView()?.onLoginFailed(userResponse.errorMsg)
+                        }
                     })
         }
     }
@@ -27,7 +32,12 @@ class LoginPresenter<V : LoginMVPView, I : LoginMVPInteractor> @Inject internal 
             compositeDisposable.add(it.doUserRegister(userName, password, rePassword)
                     .compose(schedulerProvider.ioToMainObservableScheduler())
                     .subscribe { userResponse ->
-                        getView()?.onRegisterSuccess(userResponse.data)
+                        if (userResponse.isSuccess) {
+                            it.saveUserInfo(userResponse.data)
+                            getView()?.onRegisterSuccess()
+                        } else {
+                            getView()?.onRegisterFailed(userResponse.errorMsg)
+                        }
                     })
         }
     }

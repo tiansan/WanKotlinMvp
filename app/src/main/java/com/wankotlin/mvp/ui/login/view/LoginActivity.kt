@@ -3,7 +3,6 @@ package com.wankotlin.mvp.ui.login.view
 import android.os.Bundle
 import android.view.View
 import com.wankotlin.mvp.R
-import com.wankotlin.mvp.data.network.model.User
 import com.wankotlin.mvp.ui.base.view.BaseActivity
 import com.wankotlin.mvp.ui.login.interactor.LoginMVPInteractor
 import com.wankotlin.mvp.ui.login.presenter.LoginPresenter
@@ -96,7 +95,7 @@ class LoginActivity : BaseActivity(), LoginMVPView {
         registerLayout.visibility = if (!isLogin) View.VISIBLE else View.INVISIBLE
     }
 
-    override fun onLoginSuccess(user: User) {
+    override fun onLoginSuccess() {
         hideProgress()
 //        EventBus.getDefault().post(user)
         finish()
@@ -107,10 +106,9 @@ class LoginActivity : BaseActivity(), LoginMVPView {
         toast(msg)
     }
 
-    override fun onRegisterSuccess(user: User) {
+    override fun onRegisterSuccess() {
         hideProgress()
         toast("注册并成功登录")
-//        App.instance.user = user
 //        EventBus.getDefault().post(user)
         finish()
     }
