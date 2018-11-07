@@ -1,5 +1,7 @@
 package com.wankotlin.mvp.di.builder
 
+import com.wankotlin.mvp.ui.collect.CollectActivityModule
+import com.wankotlin.mvp.ui.collect.view.CollectActivity
 import com.wankotlin.mvp.ui.home.HomeFragmentProvider
 import com.wankotlin.mvp.ui.login.LoginActivityModule
 import com.wankotlin.mvp.ui.login.view.LoginActivity
@@ -30,4 +32,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = [LoginActivityModule::class])
     abstract fun bindLoginActivity(): LoginActivity
+
+    @ContributesAndroidInjector(modules = [CollectActivityModule::class])
+    abstract fun bindCollectActivity(): CollectActivity
 }
